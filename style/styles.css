@@ -1,0 +1,204 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #ead7dd;
+    margin: 0;
+}
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/Acumin-Variable-Concept.ttf') format('ttf');
+}
+.row {
+    justify-content: center;
+}
+.centerred-image {
+    max-height: 70vh;
+    max-width: 90vh;
+}
+
+.centerred-video {
+    max-height: 70vh;
+    max-width: 90vh;
+    padding-bottom: 50px;
+}
+/* 
+.centerred-media.active {
+    visibility: visible; 
+}
+
+.centerred-media {
+    visibility: hidden;
+} */
+
+
+a {
+    transition: color 0.5s ease;
+}
+
+a:hover {
+    color: lightgray;
+}
+
+.title {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 21px;
+    font-family: 'CustomFont', sans-serif;
+    font-style: italic;
+    /* font-weight: lighter; */
+    transition: color 0.5s ease;
+    position: fixed;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Move element back by half its width to center it */
+    padding: 0;
+    margin: 0;
+
+}
+
+#zomoul {
+    bottom: 5vh !important;
+    /* justify-content: center; */
+    display: flex; 
+    letter-spacing: 10px;
+}
+
+
+.leftarrow {
+    transform: rotate(180deg);
+    height: 25px;
+    width: auto;
+    cursor: pointer;
+    position: fixed;
+    font-weight: lighter;
+    left: 90px;
+    top: 50%;
+}
+
+.leftarrow:hover {
+    color: black;
+}
+
+.rightarrow {
+    height: 25px;
+    width: auto;
+    cursor: pointer;
+    position: fixed;
+    font-weight: lighter;
+    right: 90px;
+    top: 50%;
+}
+
+.rightarrow:hover {
+    color: black;
+}
+
+.leftarrowsmall {
+    transform: rotate(180deg);
+    height: 39px;
+    width: auto;
+    cursor: pointer;
+}
+
+/* PROFILE */
+
+#itme {
+    margin-bottom: 30px;
+    color: white;
+    font-family: 'CustomFont', sans-serif;
+    font-style: normal;
+    font-size:30px;
+    letter-spacing: 12px;
+}
+ 
+#zozo {
+    height: 300px;
+    width: auto;
+    /* right: 60px; */
+    padding-left: 30px;
+    position: relative;
+}
+
+#intro {
+    padding: 50x;
+    width: 400px;
+    color: white;
+    font-size:17px;
+    font-family: 'CustomFont', sans-serif;
+    font-style: italic;
+}
+
+
+@media screen and (max-width: 480px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        backface-visibility: hidden;
+        justify-content: center;
+        display: flex;
+        justify-content: center;
+    }
+    .centerred-image {
+        max-width: 30vh;
+        padding-bottom: 80px;
+    }
+    .centerred-video {
+        max-width: 30vh;
+        padding-bottom: 80px;
+    }
+    
+    .row {
+        /* flex-direction: column; */
+        width: 100%;
+    }
+
+    #introrow {
+        justify-content: flex-start;
+    }
+    .leftarrow {
+        height: 19px;
+        left: 20px;
+    }
+    .rightarrow {
+        height: 19px;
+        right: 20px;
+    }
+    
+    /* PROFILE STUFF */
+    #intro {
+        font-size: 13px;
+        padding: 10px;
+        width: 85%;
+        left: 8%;
+        position: relative;
+    }
+    #itme {
+        font-size: 21px;
+        top: 5%;
+        /* deletion stuff */
+        margin-bottom: 0; 
+    }
+
+    #about {
+        margin-top: 20px;
+    }
+    #zozo {
+        height: 200px;
+        width: auto;
+         /* deletion stuff */
+        padding-left: 0%;
+    }
+    .col {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .photocol {
+        justify-content: center;
+    }
+
+}

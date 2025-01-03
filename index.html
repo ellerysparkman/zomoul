@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="author" content="Ellery Sparkman">
+        <meta property="og:title" content="Zo Moul Photography">
+        <meta property="og:description" content="Photos by Zoe Mouligne.">
+        <meta property="og:image" content="photos/threetwo.jpg">
+        <meta property="og:url" content="https://zomoul.web.app">
+        <meta name="description" content="Home page for Zo Moul Photography">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="style/styles.css">
+        <link rel="stylesheet" href="fonts/Acumin-Variable-Concept.ttf" type="font/ttf" />
+        <title>Zo Moul Photography</title>   
+    </head> 
+    <script>
+
+        const photos = [
+            { type: 'image', src: "compressed-images/1.jpg" },
+            { type: 'image', src: "compressed-images/2.jpg" },
+            { type: 'image', src: "compressed-images/3.jpg" },
+            { type: 'image', src: "compressed-images/4.jpg" },
+            { type: 'image', src: "compressed-images/5.jpg" },
+            { type: 'image', src: "compressed-images/6.jpg" },
+            { type: 'video', src: "photos/website.mp4" }, 
+            { type: 'image', src: "compressed-images/7.jpg" },
+            { type: 'image', src: "compressed-images/8.jpg" },
+            { type: 'image', src: "compressed-images/9.jpg" },
+            { type: 'image', src: "compressed-images/10.jpg" },
+            { type: 'image', src: "compressed-images/11.jpg" },
+            { type: 'image', src: "compressed-images/12.jpg" },
+        ];
+        let currentIndex = 0;
+
+        window.onload = function() {
+                // Preload images
+            preloadImages(photos);
+        };
+
+        function preloadImages(urls) {
+            for (var i = 0; i < urls.length; i++) {
+                var media = urls[i];
+                if (i.type === 'image'){
+                    var img = new Image();
+                    img.src = media.src;
+                } else if (media.type === 'video') {
+                    const video = document.createElement('video');
+                    video.src = media.src;
+                    video.load();
+                }
+            }
+        }
+
+        // function showMedia(index) {
+        //     const currentMedia = photos[index];
+        //     const photoElement = document.getElementById("photo");
+        //     const videoElement = document.getElementById("video");
+
+        //     if (currentMedia.type === 'image') {
+        //         videoElement.style.display = "none";
+        //         videoElement.pause();
+        //         photoElement.src = currentMedia.src;
+        //         photoElement.classList.add('active');
+
+        //     } else if (currentMedia.type === 'video') {
+        //         photoElement.classList.remove('active');
+        //         videoElement.src = currentMedia.src;
+        //         videoElement.style.display = "block";
+        //     }
+        // }
+        function showMedia(index) {
+            const currentMedia = photos[index];
+            const photoElement = document.getElementById("photo");
+            const videoElement = document.getElementById("video");
+            const columnElement = document.getElementById("photocol");
+
+            if (currentMedia.type === 'image') {
+                videoElement.style.display = "none";
+                videoElement.pause();
+                photoElement.src = currentMedia.src;
+                photoElement.style.display = "flex";
+                columnElement.classList.add("photocol"); 
+
+
+            } else if (currentMedia.type === 'video') {
+                videoElement.style.display = "flex";
+                videoElement.src = currentMedia.src;
+                photoElement.style.display = "none";
+                columnElement.classList.add("photocol"); 
+
+            }
+        }
+
+        function nextPhoto() {
+            currentIndex = currentIndex + 1;
+            if (currentIndex > photos.length-1){
+                currentIndex = 0;
+            }
+            // document.getElementById("photo").src = photos[currentIndex];
+            showMedia(currentIndex);
+        }
+
+        function previousPhoto(){
+            currentIndex = currentIndex - 1;
+            if (currentIndex <0){
+                currentIndex = photos.length-1;
+            }
+            // document.getElementById("photo").src = photos[currentIndex];
+            showMedia(currentIndex);
+        }
+
+    </script> 
+
+    <body>
+    <div class="row">
+        <div class="col">
+            <img src="photos/right-gray.png"alt="left" class="leftarrow" id="left">
+        </div>
+        <div class="col photocol">
+            <img src="compressed-images/1.jpg" alt="image couldn't load" class="centerred-image" id="photo">
+            <video autoplay loop muted playsinline style="display:none;" id="video" class="centerred-video"> 
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="col">
+            <img src="photos/right-gray.png"alt="right" class="rightarrow" id="right">
+        </div>
+    </div>
+    <div class="row">
+        <h2> <a href="profile.html"id="zomoul" class="title">ZOMOUL</a> </h2>
+    </div>
+
+        <!-- <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyAEciYqriZqugeDN8mVXH9GzCHVruAAVxY",
+              authDomain: "zo-moul.firebaseapp.com",
+              projectId: "zo-moul",
+              storageBucket: "zo-moul.appspot.com",
+              messagingSenderId: "111848332210",
+              appId: "1:111848332210:web:3714363ecf45042b8962ab",
+              measurementId: "G-PVFX22BBFY"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+          </script> -->
+    </body>
+
+    <script>
+
+        // load game initially
+        document.addEventListener("DOMContentLoaded", function(event) {
+        });
+
+        document.getElementById("left").addEventListener("click", function(event){
+            previousPhoto();
+        });
+
+        document.getElementById("right").addEventListener("click", function(event){
+            nextPhoto();
+        });
+
+        document.addEventListener("keydown", function(event){
+            if(event.keyCode === 37) { //  left arrow key
+                previousPhoto();
+            } else if (event.keyCode === 39) { // right arrow key
+                nextPhoto();
+            }
+});
+
+
+
+
+    </script>
+
+</html>
